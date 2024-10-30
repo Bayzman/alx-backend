@@ -12,14 +12,14 @@ class BasicCache(BaseCaching):
         """ Constructor of the class """
         BaseCaching.__init__(self)
 
-    def put(self, key, item):
+    def put(self, key, item) -> None:
         """ adds items to the cache """
         if (key or item) is None:
             pass
 
         self.cache_data.update({key: item})
 
-    def get(self, key):
+    def get(self, key) -> str:
         """ gets the value at the specified key """
         if (key is None) or (not key):
             return None
