@@ -9,7 +9,8 @@ class BasicCache(BaseCaching):
     """ Basic caching system """
     def __init__(self):
         """ Constructor of the class """
-        BaseCaching.__init__(self)
+        # BaseCaching.__init__(self)
+        super().__init__()
 
     def put(self, key, item) -> None:
         """ adds items to the cache """
