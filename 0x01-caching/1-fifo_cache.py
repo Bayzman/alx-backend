@@ -14,7 +14,7 @@ class FIFOCache(BaseCaching):
     def put(self, key, item):
         """ Adds item to the specified key """
         if (key or item) is None:
-            return
+            pass
 
         self.cache_data[key] = item
 
