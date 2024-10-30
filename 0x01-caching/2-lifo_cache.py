@@ -17,6 +17,8 @@ class LIFOCache(BaseCaching):
         if (key is None) or (item is None):
             return
 
+        if key in self.cache_data:
+            self.key_order.remove(key)
         self.cache_data[key] = item
         self.key_order.append(key)
 
