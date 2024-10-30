@@ -10,19 +10,20 @@ class LIFOCache(BaseCaching):
     def __init__(self):
         """ class constructor """
         super().__init__()
+        self.key_order = []
 
     def put(self, key, item):
         """ adds item to the specified key """
-        if (key or item) is None:
+        if (key is None) or (item is None):
             pass
 
-        key_list = list(self.cache_data.keys())
         self.cache_data[key] = item
+        self.key_order.append(key)
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            self.cache_data.pop(key_list[-1])
-            print(f'DISCARD: {key_list[-1]}')
-            key_list.append(key)
+            self.cache_data.pop(self.key_order[-2])
+            print(f'DISCARD: {self.key_order[-2]}')
+            del self.key_order[-2]
 
     def get(self, key):
         """ gets the value of the specified key """
