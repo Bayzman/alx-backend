@@ -16,22 +16,13 @@ class LIFOCache(BaseCaching):
         if (key or item) is None:
             pass
 
-        # self.cache_data[key] = item
         key_list = list(self.cache_data.keys())
-
-        if key in self.cache_data:
-            key_list.remove(key)
-        key_list.append(key)
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            print(f'DISCARD: {key_list[-2]}')
-            self.cache_data.pop(key_list[-2])
-
-        # elif key in (key_list):
-        # and len(self.cache_data) <= BaseCaching.MAX_ITEMS:
-        # self.cache_data[key] = item
-        # print(f'DISCARD: {key}')
+            self.cache_data.pop(key_list[-1])
+            print(f'DISCARD: {key_list[-1]}')
+            key_list.append(key)
 
     def get(self, key):
         """ gets the value of the specified key """
