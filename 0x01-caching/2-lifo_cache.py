@@ -1,40 +1,41 @@
 #!/usr/bin/env python3
-"""
-A class LIFOCache that inherits from
-BaseCaching and is a caching system
-"""
+
+""" LIFO Caching """
+
 from base_caching import BaseCaching
 
 
 class LIFOCache(BaseCaching):
-    """
-    A class for LIFO caching system
-    """
+    """ LIFO Caching """
     def __init__(self):
+        """ class constructor """
         super().__init__()
-        self.cache_data = {}
-        self.order = []
 
     def put(self, key, item):
-        """
-        A function that is used to assing key to item
-        """
-        if key is None or item is None:
-            return
+        """ adds item to the specified key """
+        if (key or item) is None:
+            pass
+
+        # self.cache_data[key] = item
+        key_list = list(self.cache_data.keys())
+
         if key in self.cache_data:
-            self.order.remove(key)
-        self.order.append(key)
+            key_list.remove(key)
+        key_list.append(key)
         self.cache_data[key] = item
+
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            newest_key = self.order[-2]
-            self.order.remove(newest_key)
-            del self.cache_data[newest_key]
-            print("DISCARD: " + newest_key)
+            print(f'DISCARD: {key_list[-2]}')
+            self.cache_data.pop(key_list[-2])
+
+        # elif key in (key_list):
+        # and len(self.cache_data) <= BaseCaching.MAX_ITEMS:
+        # self.cache_data[key] = item
+        # print(f'DISCARD: {key}')
 
     def get(self, key):
-        """
-        A method that gets the value of a particular key value
-        """
-        if key is None:
+        """ gets the value of the specified key """
+        if (key is None):
             return None
-        return self.cache_data.get(key, None)
+
+        self.cache_data.get(key)
