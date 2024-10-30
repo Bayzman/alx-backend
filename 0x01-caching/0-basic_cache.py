@@ -11,6 +11,7 @@ class BasicCache(BaseCaching):
         """ Constructor of the class """
         # BaseCaching.__init__(self)
         super().__init__()
+        self.cache_data = {}
 
     def put(self, key, item) -> None:
         """ adds items to the cache """
