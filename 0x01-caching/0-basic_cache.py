@@ -14,14 +14,14 @@ class BasicCache(BaseCaching):
 
     def put(self, key, item) -> None:
         """ adds items to the cache """
-        if (key or item) is None:
+        if (key is None) or (item is None):
             pass
 
         self.cache_data.update({key: item})
 
     def get(self, key) -> str:
         """ gets the value at the specified key """
-        if (key is None) or (not key):
+        if (key is None):
             return None
 
         return self.cache_data.get(key)
