@@ -52,4 +52,4 @@ class Server:
         if start_idx >= len(self.dataset()):
             return []
 
-        return self.dataset[start_idx : end_idx]
+        return self.dataset()[start_idx : end_idx]
