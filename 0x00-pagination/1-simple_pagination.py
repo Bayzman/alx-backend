@@ -44,12 +44,12 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """ returns the appropriate page of the dataset """
-        assert isinstance (page, int) and page > 0
-        assert isinstance (page_size, int) and page_size > 0
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
         start_idx, end_idx = index_range(page, page_size)
 
         if start_idx >= len(self.dataset()):
             return []
 
-        return self.dataset()[start_idx : end_idx]
+        return self.dataset()[start_idx:end_idx]
