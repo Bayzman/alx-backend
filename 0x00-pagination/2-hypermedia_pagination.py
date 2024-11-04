@@ -56,7 +56,7 @@ class Server:
 
     def get_hyper(self, page: int, page_size: int) -> Dict:
         """ returns a dictionary containing some key-value pairs """
-        start_idx, end_idx = index_range(page, page_size)
+        # start_idx, end_idx = index_range(page, page_size)
         data = self.get_page(page, page_size)
         current_page_size = len(data)
         prev_page = None if (page - 1 <= 0) else (page - 1)
