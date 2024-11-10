@@ -7,6 +7,7 @@ from flask_babel import Babel, _
 
 app = Flask(__name__)
 
+
 class Config:
     """Configuration class for supported languages and default settings."""
     LANGUAGES = ["en", "fr"]
@@ -27,7 +28,9 @@ users = {
 
 
 def get_user():
-    """Retrieve a user from the users dictionary based on the login_as parameter."""
+    """ Retrieve a user from the users
+        dictionary based on the login_as parameter.
+    """
     try:
         user_id = int(request.args.get('login_as'))
         return users.get(user_id)
