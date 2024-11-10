@@ -31,7 +31,9 @@ users = {
 
 
 def get_user():
-    """Retrieve a user from the users dictionary based on the login_as parameter."""
+    """ Retrieve a user from the users dictionary
+       based on the login_as parameter.
+    """
     try:
         user_id = int(request.args.get('login_as'))
         return users.get(user_id)
@@ -47,23 +49,27 @@ def before_request():
 
 @babel.localeselector
 def get_locale():
-    """Determine the best match for supported languages, following the specified priority."""
+    """ Determine the best match for supported languages,
+        following the specified priority.
+    """
     # 1. Check for locale in URL parameters
     locale = request.args.get('locale')
     if locale in app.config['LANGUAGES']:
         return locale
-    
+
     # 2. Check user's preferred locale, if logged in
     if g.user and g.user.get('locale') in app.config['LANGUAGES']:
         return g.user['locale']
-    
+
     # 3. Check for locale in request headers
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @babel.timezoneselector
 def get_timezone():
-    """Determine the best match for supported time zones, following the specified priority."""
+    """ Determine the best match for supported time zones,
+        following the specified priority.
+    """
     # 1. Check for timezone in URL parameters
     timezone = request.args.get('timezone')
     if timezone:
@@ -85,21 +91,25 @@ def get_timezone():
 
 @app.route('/')
 def index():
-    """Render the homepage with the current time in the user's inferred time zone."""
+    """ Render the homepage with the
+        current time in the user's inferred time zone.
+    """
     # Get the user's timezone
     user_timezone = pytz.timezone(get_timezone())
-    
+
     # Get current time in that timezone
     current_time = datetime.now(user_timezone)
-    
+
     # Format time for display in the current locale
     formatted_time = current_time.strftime("%b %d, %Y, %I:%M:%S %p")
     if get_locale() == 'fr':
         formatted_time = current_time.strftime("%d %b %Y à %H:%M:%S")
 
     # Display translated time in the template
-    current_time_message = gettext("current_time_is") % {'current_time': formatted_time}
-    return render_template('index.html', current_time_message=current_time_message)
+    current_time_message = gettext("current_time_is") % {'current_time':
+                                                         formatted_time}
+    return render_template('index.html',
+                           current_time_message=current_time_message)
 
 
 if __name__ == "__main__":
