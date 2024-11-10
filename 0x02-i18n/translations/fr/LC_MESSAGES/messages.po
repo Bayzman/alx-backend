@@ -2,12 +2,13 @@
 # Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-09 08:25+0300\n"
-"PO-Revision-Date: 2024-11-09 08:26+0300\n"
+"POT-Creation-Date: 2024-11-10 11:39+0300\n"
+"PO-Revision-Date: 2024-11-10 11:41+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -30,3 +31,6 @@ msgstr "Vous êtes connecté en tant que %(username)s."
 
 msgid "not_logged_in"
 msgstr "Vous n'êtes pas connecté."
+
+msgid "current_time_is"
+msgstr "Nous sommes le %(current_time)s."
